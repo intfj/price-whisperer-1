@@ -1,7 +1,8 @@
 from flask import Flask, request, render_template, send_file
 import os
 import openpyxl
-from utils.scraper import fetch_all_marketplace_data
+from src.scraper import fetch_all_marketplace_data
+
 
 app = Flask(__name__)
 
