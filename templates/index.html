@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Price Whisperer</title>
+</head>
+<body>
+    <h1>Price Whisperer</h1>
+    <form method="POST">
+        <label>Product Name:</label><br>
+        <input type="text" name="product" required><br><br>
+        <label>Optional URL:</label><br>
+        <input type="text" name="url"><br><br>
+        <label>Base Price:</label><br>
+        <input type="number" name="base_price" step="0.01" required><br><br>
+        <label>Profit Margin (%):</label><br>
+        <input type="number" name="profit_margin" step="0.01" required><br><br>
+        <button type="submit">Get Prices</button>
+    </form>
+
+    {% if results %}
+        <h2>Results</h2>
+        <table border="1">
+            <tr>
+                <th>Marketplace</th>
+                <th>Price</th>
+                <th>Profit</th>
+                <th>Recommended Selling Price</th>
+            </tr>
+            {% for item in results %}
+            <tr>
+                <td>{{ item.marketplace }}</td>
+                <td>${{ item.price }}</td>
+                <td>${{ item.profit }}</td>
+                <td>${{ item.recommended_price }}</td>
+            </tr>
+            {% endfor %}
+        </table><br>
+        <a href="/download"><button>Download Spreadsheet</button></a>
+    {% endif %}
+</body>
+</html>
